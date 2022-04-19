@@ -31,8 +31,8 @@ def show_recipe(id):
 
 @app.route('/recipes/edit/<id>')
 def edit_recipe(id):
-    if "user_id" != "recipe.user.id":
-        return redirect('logout')
+    if "user_id" != "recipe.user_id":
+        return redirect('/logout')
     if not "user_id" in session:
         return redirect('/logout')
     the_recipe = recipe.Recipe.get_recipe_by_id(id)
@@ -40,8 +40,8 @@ def edit_recipe(id):
 
 @app.route('/recipes/update/<id>', methods = ['POST'])
 def update_recipe(id):
-    if "user_id" != "recipe.user.id":
-        return redirect('logout')
+    if "user_id" != "recipe.user_id":
+        return redirect('/logout')
     if not "user_id" in session:
         return redirect('/logout')
     data = {
@@ -57,7 +57,7 @@ def update_recipe(id):
 
 @app.route('/recipes/delete/<id>')
 def delete_recipe(id):
-    if "user_id" != "recipe.user.id":
+    if "user_id" != "recipe.user_id":
         return redirect('logout')
     if not "user_id" in session:
         return redirect('/logout')

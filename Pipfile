@@ -8,6 +8,7 @@ flask = "==2.0.3"
 pymysql = "*"
 werkzeug = "==2.0.3"
 flask-bcrypt = "*"
+install = "*"
 
 [dev-packages]
 
