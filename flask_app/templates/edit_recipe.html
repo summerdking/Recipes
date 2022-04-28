@@ -57,10 +57,6 @@
                         No
                         <input type="radio" name="under_30_minutes" value="0" {% if recipe.under_30_minutes == 0 %} checked {% endif %}>
                     </label>
-                    <label>
-                        Date Made:
-                        <input type="date" class="form-control" name="created_at" value="{{ recipe.created_at.strftime('%Y-%m-%d')}}" readonly>
-                    </label>
                     <div>
                         <button class="btn btn-secondary mt-3" type="submit">Update</button>
                     </div>

@@ -14,7 +14,7 @@ def create_recipe():
         'name' : request.form['name'],
         'description' : request.form['description'],
         'instructions' : request.form['instructions'],
-        'under_30_minutes' : request.form['under_30_minutes'],
+        'under_30_minutes' : int(request.form['under_30_minutes']),
         'user_id' : session['user_id'],
     }
     recipe_id = recipe.Recipe.create_recipe(data)
@@ -31,8 +31,6 @@ def show_recipe(id):
 
 @app.route('/recipes/edit/<id>')
 def edit_recipe(id):
-    if "user_id" != "recipe.user_id":
-        return redirect('/logout')
     if not "user_id" in session:
         return redirect('/logout')
     the_recipe = recipe.Recipe.get_recipe_by_id(id)
@@ -40,8 +38,6 @@ def edit_recipe(id):
 
 @app.route('/recipes/update/<id>', methods = ['POST'])
 def update_recipe(id):
-    if "user_id" != "recipe.user_id":
-        return redirect('/logout')
     if not "user_id" in session:
         return redirect('/logout')
     data = {
@@ -49,7 +45,7 @@ def update_recipe(id):
         'name' : request.form['name'],
         'description' : request.form['description'],
         'instructions' : request.form['instructions'],
-        'under_30_minutes' : request.form['under_30_minutes'],
+        'under_30_minutes' : int(request.form['under_30_minutes']),
     }
     if recipe.Recipe.edit_recipe(data):
         return redirect(f'/recipes/{id}')
@@ -57,8 +53,6 @@ def update_recipe(id):
 
 @app.route('/recipes/delete/<id>')
 def delete_recipe(id):
-    if "user_id" != "recipe.user_id":
-        return redirect('logout')
     if not "user_id" in session:
         return redirect('/logout')
     data = { 'id' : id}
