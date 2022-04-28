@@ -1,3 +1,3 @@
 # Recipes
 
-Flask app with reigstration and validation.
+Flask app with user registration and validation.
